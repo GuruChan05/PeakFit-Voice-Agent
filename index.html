@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PeakFit Voice Booking</title>
+</head>
+<body>
+
+<h1>PeakFit Fitness Studio</h1>
+
+<button id="start">Start Voice Booking</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/index.js"></script>
+
+<script>
+const vapi = new Vapi("YOUR_PUBLIC_KEY");
+
+document.getElementById("start").addEventListener("click", async () => {
+
+  await vapi.start("YOUR_ASSISTANT_ID");
+
+});
+
+vapi.on("call-start", () => {
+  console.log("Call started");
+});
+
+vapi.on("call-end", () => {
+  console.log("Call ended");
+});
+</script>
+
+</body>
+</html>
