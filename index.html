@@ -1,33 +1,24 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
 <head>
-  <title>PeakFit Voice Booking</title>
+  <title>PeakFit Voice Agent</title>
 </head>
-<body>
+<body><h1>PeakFit Voice Agent</h1><button id="start">Start Call</button>
 
-<h1>PeakFit Fitness Studio</h1>
+<script type="module">
+import Vapi from "https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js";
 
-<button id="start">Start Voice Booking</button>
-
-<script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js"></script>
-
-<script>
 const vapi = new Vapi("d9af73e7-201a-4f16-85d6-f32049981526");
 
 document.getElementById("start").addEventListener("click", async () => {
-
   await vapi.start("13f7f1b3-3448-4fec-a348-4721c5141a25");
-
 });
 
 vapi.on("call-start", () => {
-  console.log("Call started");
+  console.log("Call Started");
 });
 
 vapi.on("call-end", () => {
-  console.log("Call ended");
+  console.log("Call Ended");
 });
-</script>
-
-</body>
+</script></body>
 </html>
