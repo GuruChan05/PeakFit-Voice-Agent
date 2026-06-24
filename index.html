@@ -1,24 +1,47 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
-  <title>PeakFit Voice Agent</title>
+  <title>PeakFit Voice Booking</title>
 </head>
-<body><h1>PeakFit Voice Agent</h1><button id="start">Start Call</button>
+<body>
 
-<script type="module">
-import Vapi from "https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js";
+<h1>PeakFit Fitness Studio</h1>
 
-const vapi = new Vapi("d9af73e7-201a-4f16-85d6-f32049981526");
+<p>Click below to start voice booking.</p>
 
-document.getElementById("start").addEventListener("click", async () => {
-  await vapi.start("abe1bc5c-e339-4f85-9eb1-ef91f448cda4");
-});
+<script>
+  var vapiInstance = null;
 
-vapi.on("call-start", () => {
-  console.log("Call Started");
-});
+  const assistant = "13f7f1b3-3448-4fec-a348-4721c5141a25";
 
-vapi.on("call-end", () => {
-  console.log("Call Ended");
-});
-</script></body>
+  const apiKey = "d9af73e7-201a-4f16-85d6-f32049981526";
+
+  const buttonConfig = {
+    position: "bottom-right",
+    title: "Start Voice Booking"
+  };
+
+  (function (d, t) {
+    var g = document.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+
+    g.src =
+      "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+
+    g.defer = true;
+    g.async = true;
+
+    s.parentNode.insertBefore(g, s);
+
+    g.onload = function () {
+      vapiInstance = window.vapiSDK.run({
+        apiKey: apiKey,
+        assistant: assistant,
+        config: buttonConfig,
+      });
+    };
+  })(document, "script");
+</script>
+
+</body>
 </html>
